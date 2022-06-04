@@ -5,7 +5,6 @@ import pandas as pd
 import numpy as np
 
 
-
 def prepare_data(df,forecast_col,forecast_out,test_size):
     label = df[forecast_col].shift(-forecast_out) #creating new column called label with the last 5 rows are nan
     X = np.array(df[[forecast_col]]) #creating the feature array
@@ -19,9 +18,10 @@ def prepare_data(df,forecast_col,forecast_out,test_size):
     response = [X_train,X_test , Y_train, Y_test , X_lately]
     return response
 
+
+
 df = pd.read_csv("prices.csv")
-df = df[df.symbol == "GOOG"]
-forecast_col = 'close'
+forecast_col = 'Close'
 forecast_out = 5
 test_size = 0.2
 
